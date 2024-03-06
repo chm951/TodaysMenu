@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.todaysmenu.db.CalDAO">
+
+	<select id="calendar" resultType="com.todaysmenu.model.CalVO">
+
+		select ID, TITLE, 
+		TO_char(start1, 'YYYY-MM-DD') START1,
+		TEXTCOLOR, BACKGROUNDCOLOR from calendar
+		where ID = #{user_id}
+	</select>
+	
+	<insert id="calendarJoin" parameterType="com.todaysmenu.model.CalVO">
+		INSERT INTO CALENDAR (ID,TITLE,START1,TEXTCOLOR,BACKGROUNDCOLOR)
+		VALUES(#{id},#{title},(SYSDATE+1),#{textcolor},#{backgroundcolor})
+	</insert>
+</mapper>

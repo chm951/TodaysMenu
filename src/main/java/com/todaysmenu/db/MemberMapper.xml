@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.todaysmenu.db.MemberDAO">
+	<insert id="join" parameterType="com.todaysmenu.model.MemberVO">
+		INSERT INTO
+		USER_INFO(user_id,user_pw,user_name,user_gender,user_birthdate)
+		VALUES
+		(#{user_id},#{user_pw},#{user_name},#{user_gender},#{user_birthdate})
+	</insert>
+	<select id="login" parameterType="com.todaysmenu.model.MemberVO"
+		resultType="com.todaysmenu.model.MemberVO">
+		SELECT USER_ID, USER_PW, USER_NAME, USER_GENDER, TO_CHAR(USER_BIRTHDATE, 'YYYY-MM-DD') AS USER_BIRTHDATE FROM USER_INFO
+		WHERE USER_ID = #{user_id}
+		AND
+		USER_PW = #{user_pw}
+	</select>
+
+	<select id="idCheck" parameterType="String" resultType="boolean">
+		SELECT
+		CASE WHEN COUNT(*)>0 THEN 1
+		ELSE 0
+		END RESULT
+		FROM USER_INFO WHERE
+		user_ID = #{user_id}
+	</select>
+	<insert id="insertMeal"
+		parameterType="com.todaysmenu.model.MealVO">
+		INSERT INTO MEAL_INFO
+		(MEAL_NUM,MEAL_TYPE,MEAL_MENU,USER_ID,MEALED_AT)
+		VALUES
+		(1,#{meal_type},#{meal_menu},#{user_id},SYSDATE+1)
+	</insert>
+	<insert id="insertRecipe"
+		parameterType="com.todaysmenu.model.RecipeVO">
+		INSERT INTO RECIPE_INFO
+		(RECIPE_NUM,RECIPE_NAME,RECIPE_DESC,RECIPE_INGRE)
+		VALUES
+		(1,#{recipe_name},#{recipe_desc},#{recipe_ingre})
+	</insert>
+	<insert id="insertBoard"
+		parameterType="com.todaysmenu.model.BoardVO">
+		INSERT INTO BOARD_INFO
+		(B_NUM,B_TITLE,B_CONTENT,CREATED_AT,USER_ID)
+		VALUES
+		(1,#{b_title},#{b_content},SYSDATE,#{user_id})
+	</insert>
+	<update id="update"
+		parameterType="com.todaysmenu.model.MemberVO">
+		UPDATE USER_INFO
+		SET USER_PW = #{user_pw},
+		USER_NAME=#{user_name}
+		WHERE USER_ID = #{user_id}
+	</update>
+	<delete id="resign"
+		parameterType="com.todaysmenu.model.MemberVO">
+		DELETE FROM USER_INFO
+		WHERE USER_ID = #{user_id}
+	</delete>
+	
+
+	<select id="showyoutube" resultType="com.todaysmenu.model.YoutubeVO">
+		SELECT *
+		FROM YOUTUBE_INFO WHERE YOUTUBE_NAME = #{youtube_name}
+	</select>
+	<select id="showyoutubeAll" resultType="com.todaysmenu.model.YoutubeVO">
+		SELECT *
+		FROM YOUTUBE_INFO
+	</select>
+
+
+</mapper>

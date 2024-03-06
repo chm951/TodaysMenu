@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.todaysmenu.db.BoardDAO">
+	<select id="allBoard" resultType="com.todaysmenu.model.BoardVO">
+	select *
+	from(select rownum as b_idx, a.*
+	from(select b_num, b_title, to_char(created_at,'yyyy.mm.dd')as created_at, user_id
+	from board_info where user_id = #{user_id} order by b_num)a)
+	order by b_idx desc
+	</select>
+	
+	<select id="detailBoard" resultType="Board">
+		select b_num, b_title, b_content, to_char(created_at, 'yyyy.mm.dd hh24:mi') as created_at, user_id from board_info where b_num=#{num}
+	</select>
+	<delete id="deleteBoard" parameterType="Board">
+	DELETE FROM BOARD_INFO WHERE B_NUM = #{b_num}
+	</delete>
+</mapper>
