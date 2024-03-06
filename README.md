@@ -87,7 +87,7 @@
 
 ![](https://github.com/SMHRD-2021-KDT-AI-16/energizoRePo/assets/141302317/b12986f2-98e4-41d6-a807-c3341388812d)
 
-- **컨텐츠 저장** :pushpin: [코드 확인](https://github.com/SMHRD-2021-KDT-AI-16/energizoRePo/blob/53ffdee5cf2997697bfcc45ccff2cd63d96273f2/EP2/src/main/java/com/todaysmenu/controller/FilteringService.java#L43)
+- **컨텐츠 저장** :pushpin: [코드 확인](https://github.com/chm951/TodaysMenu/blob/1f561fcb1af93d8c351188074936d9e901ef483b/src/main/java/com/todaysmenu/controller/FilteringService.java#L43)
   - 파싱이 끝난 컨텐츠는 CalDAO, BoardDAO를 통해 DB에 저장합니다.
   - 저장된 컨텐츠는 다시 DAO - Service - Controller를 거쳐 화면단에 송출됩니다.
 
