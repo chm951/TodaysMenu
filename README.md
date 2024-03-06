@@ -62,7 +62,7 @@
 
 ![](https://github.com/SMHRD-2021-KDT-AI-16/energizoRePo/assets/141302317/df0a3f55-a80f-4881-8c6f-855b85001e8e)
 
-- **POST 요청** :pushpin: [코드 확인](https://github.com/SMHRD-2021-KDT-AI-16/energizoRePo/blob/9f23cfa466962fbf3f28a4fa1a5d556152078ac8/EP2/src/main/webapp/jsp/main.jsp#L447C20-L447C69)
+- **POST 요청** :pushpin: [코드 확인](https://github.com/chm951/TodaysMenu/blob/72b1b136f0e607e0e55a5c9abad40d91cb4d3498/src/main/webapp/jsp/main.jsp#L447)
   - form 요소를 사용하여 컨텐츠를 저장하는 POST 요청을 서버로 전송.
 
 ### 4.3. Controller
